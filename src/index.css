@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brutalist-pink: #ff007f;   /* Hot Pink */
+  --color-off-white: #fdfaf1;        /* Bone White */
+  --color-ink-black: #0a0a0a;        /* Architectural Black */
+
+  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+}
+
+@layer base {
+  body {
+    /* Set global defaults */
+    @apply bg-brutalist-pink text-off-white uppercase font-bold;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-ink-black text-brutalist-pink;
+  }
+}
