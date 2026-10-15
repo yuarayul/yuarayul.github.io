@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AlbumIdentitiesRouteImport } from './routes/album-identities'
+import { Route as BrandIdentitiesRouteImport } from './routes/brand-identities'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EventIdentitiesRouteImport } from './routes/event-identities'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +26,86 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlbumIdentitiesRoute = AlbumIdentitiesRouteImport.update({
+  id: '/album-identities',
+  path: '/album-identities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrandIdentitiesRoute = BrandIdentitiesRouteImport.update({
+  id: '/brand-identities',
+  path: '/brand-identities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventIdentitiesRoute = EventIdentitiesRouteImport.update({
+  id: '/event-identities',
+  path: '/event-identities',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/album-identities': typeof AlbumIdentitiesRoute
+  '/brand-identities': typeof BrandIdentitiesRoute
   '/contact': typeof ContactRoute
+  '/event-identities': typeof EventIdentitiesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/album-identities': typeof AlbumIdentitiesRoute
+  '/brand-identities': typeof BrandIdentitiesRoute
   '/contact': typeof ContactRoute
+  '/event-identities': typeof EventIdentitiesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/album-identities': typeof AlbumIdentitiesRoute
+  '/brand-identities': typeof BrandIdentitiesRoute
   '/contact': typeof ContactRoute
+  '/event-identities': typeof EventIdentitiesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/album-identities'
+    | '/brand-identities'
+    | '/contact'
+    | '/event-identities'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact'
-  id: '__root__' | '/' | '/about' | '/contact'
+  to:
+    | '/'
+    | '/about'
+    | '/album-identities'
+    | '/brand-identities'
+    | '/contact'
+    | '/event-identities'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/album-identities'
+    | '/brand-identities'
+    | '/contact'
+    | '/event-identities'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AlbumIdentitiesRoute: typeof AlbumIdentitiesRoute
+  BrandIdentitiesRoute: typeof BrandIdentitiesRoute
   ContactRoute: typeof ContactRoute
+  EventIdentitiesRoute: typeof EventIdentitiesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +124,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/album-identities': {
+      id: '/album-identities'
+      path: '/album-identities'
+      fullPath: '/album-identities'
+      preLoaderRoute: typeof AlbumIdentitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/brand-identities': {
+      id: '/brand-identities'
+      path: '/brand-identities'
+      fullPath: '/brand-identities'
+      preLoaderRoute: typeof BrandIdentitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/event-identities': {
+      id: '/event-identities'
+      path: '/event-identities'
+      fullPath: '/event-identities'
+      preLoaderRoute: typeof EventIdentitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +158,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AlbumIdentitiesRoute: AlbumIdentitiesRoute,
+  BrandIdentitiesRoute: BrandIdentitiesRoute,
   ContactRoute: ContactRoute,
+  EventIdentitiesRoute: EventIdentitiesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

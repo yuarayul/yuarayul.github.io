@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { PageShell } from "@/components/portfolio/PageShell";
 import { Project } from "@/components/portfolio/Project";
+import { SectionNav } from "@/components/portfolio/SectionNav";
 import { SiteFooter } from "@/components/portfolio/SiteFooter";
 import { Ticker } from "@/components/portfolio/Ticker";
 import { projects } from "@/data/projects";
@@ -28,6 +29,7 @@ function HomePage() {
           <Ticker text="EVENTS VISUALS DIRECTION • ALBUM VISUALS DIRECTION • BRAND IDENTITY DIRECTION" />
         </section>
         <section id="work" className="flex scroll-mt-24 flex-col" aria-label="Selected work">
+          <SectionNav />
           {projects.map((item) => <Project key={item.id} {...item} />)}
         </section>
         <Ticker text="AVAILABLE FOR PROJECTS 2026 • LATEST CATALOGUE" label="Availability" />
